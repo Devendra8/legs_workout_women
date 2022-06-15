@@ -6,7 +6,7 @@ import 'package:butt_workout/main.dart';
 import 'package:butt_workout/model/advance/advance_exercise_set.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class AdvanceWidget extends StatelessWidget {
+class AdvanceWidget extends StatefulWidget {
   final ExerciseSet exerciseSet;
 
   const AdvanceWidget({
@@ -14,16 +14,28 @@ class AdvanceWidget extends StatelessWidget {
   });
 
   @override
+  State<AdvanceWidget> createState() => _AdvanceWidgetState();
+}
+
+class _AdvanceWidgetState extends State<AdvanceWidget> {
+  @override
   Widget build(BuildContext context) {
-    final minutes = exerciseSet.totalDuration / 60;
+    final minutes = widget.exerciseSet.totalDuration / 60;
 
     final minutes1 = minutes.ceil();
 
-    String? dayValue = exerciseSet.Day;
+    String? dayValue = widget.exerciseSet.Day;
+
+    int previousDayValue = int.parse(widget.exerciseSet.Day) - 1;
+
+    int previousDayProgressValueInteger = previousDayValue;
 
     int? ProgressValueText;
 
     double? progressValue = box.get('AdvanceDay$dayValue');
+
+    double? previousDayProgressValue =
+        box.get('AdvanceDay$previousDayProgressValueInteger');
 
     if (progressValue.toString() == 'null') {
       progressValue = 0;
@@ -37,16 +49,31 @@ class AdvanceWidget extends StatelessWidget {
       height: 110,
       padding: const EdgeInsets.all(15.0),
       child: GestureDetector(
-        onTap: () => showModalBottomSheet(
-          context: context,
-          builder: (context) => SingleChildScrollView(
-            child: Column(
-              children: [
-                AdvanceExerciseBottomSheet(exerciseSet: exerciseSet),
-              ],
-            ),
-          ),
-        ),
+        onTap: dayValue == '1'
+            ? () => showModalBottomSheet(
+                  context: context,
+                  builder: (context) => SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        AdvanceExerciseBottomSheet(
+                            exerciseSet: widget.exerciseSet),
+                      ],
+                    ),
+                  ),
+                )
+            : previousDayProgressValue == 100
+                ? () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            AdvanceExerciseBottomSheet(
+                                exerciseSet: widget.exerciseSet),
+                          ],
+                        ),
+                      ),
+                    )
+                : null,
         child: Container(
           // width: double.infinity,
           // height: 105,
@@ -70,14 +97,14 @@ class AdvanceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    exerciseSet.name,
+                    widget.exerciseSet.name,
                     style: TextStyle(
                       fontSize: 16,
                       color: darkBlue,
                     ),
                   ),
                   Text(
-                    exerciseSet.Day,
+                    widget.exerciseSet.Day,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -127,11 +154,38 @@ class AdvanceWidget extends StatelessWidget {
                     // color: Colors.purple,
                     // shape: RoundedRectangleBorder(
                     // borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AdvanceExerciseListPage(
-                              exerciseSet: exerciseSet)));
-                    },
+                    onPressed: dayValue == '1'
+                        ? () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        AdvanceExerciseListPage(
+                                            exerciseSet: widget.exerciseSet)))
+                                .then(
+                                  (_) => setState(() {
+                                    progressValue = box.get(
+                                        'AdvanceDay$dayValue',
+                                        defaultValue: 0.0);
+                                  }),
+                                );
+                          }
+                        : previousDayProgressValue == 100
+                            ? () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(
+                                        builder: (context) =>
+                                            AdvanceExerciseListPage(
+                                                exerciseSet:
+                                                    widget.exerciseSet)))
+                                    .then(
+                                      (_) => setState(() {
+                                        progressValue = box.get(
+                                            'AdvanceDay$dayValue',
+                                            defaultValue: 0.0);
+                                      }),
+                                    );
+                              }
+                            : null,
                     child: const Text(
                       "START",
                       style: TextStyle(fontSize: 20, color: Colors.white),

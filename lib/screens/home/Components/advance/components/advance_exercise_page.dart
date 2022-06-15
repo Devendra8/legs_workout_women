@@ -81,6 +81,10 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
 
     progress = box.get('AdvanceDay$dayValue');
     calorie = box.get('CalorieDay$todayDate', defaultValue: 0.0);
+
+    if (progress != 100) {
+      progress = 0;
+    }
   }
 
   @override
@@ -133,6 +137,14 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           index = index - 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
+                          if (progress.toString() == 'null') {
+                            progress = 0;
+                          }
+                          if (progress != 100) {
+                            progress = progress! - totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('AdvanceDay$dayValue', progress);
+                          }
                         });
                       },
                 icon: Icon(
@@ -148,6 +160,14 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           index = index + 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
+                          if (progress.toString() == 'null') {
+                            progress = 0;
+                          }
+                          if (progress != 100) {
+                            progress = progress! + totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('AdvanceDay$dayValue', progress);
+                          }
                         });
                       },
                 icon: Icon(
@@ -279,9 +299,12 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           if (progress.toString() == 'null') {
                             progress = 0;
                           }
-                          progress = progress! + totalProgressValue!;
-                          // progress = progress! / 100;
-                          box.put('EasyDay$dayValue', progress);
+                          if (progress != 100) {
+                            progress = progress! + totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('AdvanceDay$dayValue', progress);
+                          }
+
                           calorie = calorie! + 5;
                           box.put('CalorieDay$todayDate', calorie);
                           setState(() {

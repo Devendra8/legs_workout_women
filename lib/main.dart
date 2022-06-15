@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
+import 'package:wakelock/wakelock.dart';
 
 late Box box;
 bool? loginScreen;
@@ -55,6 +56,9 @@ Future main() async {
   if (waterNotification == false) {
     NotificationApi.cancelAllNotifications();
   }
+
+  Wakelock.enable();
+
   runApp(const MyApp());
 }
 

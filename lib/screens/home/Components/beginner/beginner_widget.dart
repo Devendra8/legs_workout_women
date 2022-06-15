@@ -6,7 +6,7 @@ import 'package:butt_workout/main.dart';
 import 'package:butt_workout/model/beginner/beginner_exercise_set.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class BeginnerWidget extends StatelessWidget {
+class BeginnerWidget extends StatefulWidget {
   final ExerciseSet exerciseSet;
 
   const BeginnerWidget({
@@ -14,16 +14,28 @@ class BeginnerWidget extends StatelessWidget {
   });
 
   @override
+  State<BeginnerWidget> createState() => _BeginnerWidgetState();
+}
+
+class _BeginnerWidgetState extends State<BeginnerWidget> {
+  @override
   Widget build(BuildContext context) {
-    final minutes = exerciseSet.totalDuration / 60;
+    final minutes = widget.exerciseSet.totalDuration / 60;
 
     final minutes1 = minutes.ceil();
 
-    String? dayValue = exerciseSet.Day;
+    String? dayValue = widget.exerciseSet.Day;
+
+    int previousDayValue = int.parse(widget.exerciseSet.Day) - 1;
+
+    int previousDayProgressValueInteger = previousDayValue;
 
     int? ProgressValueText;
 
-    double? progressValue = box.get('BeginnerDay$dayValue');
+    double? progressValue = box.get('EasyDay$dayValue');
+
+    double? previousDayProgressValue =
+        box.get('EasyDay$previousDayProgressValueInteger');
 
     if (progressValue.toString() == 'null') {
       progressValue = 0;
@@ -33,20 +45,39 @@ class BeginnerWidget extends StatelessWidget {
       progressValue = progressValue / 100;
     }
 
+    void initState() {
+      super.initState();
+    }
+
     return Container(
       height: 110,
       padding: const EdgeInsets.all(15.0),
       child: GestureDetector(
-        onTap: () => showModalBottomSheet(
-          context: context,
-          builder: (context) => SingleChildScrollView(
-            child: Column(
-              children: [
-                BeginnerExerciseBottomSheet(exerciseSet: exerciseSet),
-              ],
-            ),
-          ),
-        ),
+        onTap: dayValue == '1'
+            ? () => showModalBottomSheet(
+                  context: context,
+                  builder: (context) => SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        BeginnerExerciseBottomSheet(
+                            exerciseSet: widget.exerciseSet),
+                      ],
+                    ),
+                  ),
+                )
+            : previousDayProgressValue == 100
+                ? () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            BeginnerExerciseBottomSheet(
+                                exerciseSet: widget.exerciseSet),
+                          ],
+                        ),
+                      ),
+                    )
+                : null,
         child: Container(
           // width: double.infinity,
           // height: 105,
@@ -70,14 +101,14 @@ class BeginnerWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    exerciseSet.name,
+                    widget.exerciseSet.name,
                     style: TextStyle(
                       fontSize: 16,
                       color: darkBlue,
                     ),
                   ),
                   Text(
-                    exerciseSet.Day,
+                    widget.exerciseSet.Day,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -127,11 +158,46 @@ class BeginnerWidget extends StatelessWidget {
                     // color: Colors.purple,
                     // shape: RoundedRectangleBorder(
                     // borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => BeginnerExerciseListPage(
-                              exerciseSet: exerciseSet)));
-                    },
+                    onPressed: dayValue == '1'
+                        ? () {
+                            setState(() {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          BeginnerExerciseListPage(
+                                              exerciseSet: widget.exerciseSet)))
+                                  .then(
+                                    (_) => setState(() {
+                                      progressValue = box.get(
+                                          'EasyDay$dayValue',
+                                          defaultValue: 0.0);
+                                      previousDayProgressValue = box.get(
+                                          'EasyDay$previousDayProgressValueInteger');
+                                    }),
+                                  );
+                            });
+                          }
+                        : previousDayProgressValue == 100
+                            ? () {
+                                setState(() {
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              BeginnerExerciseListPage(
+                                                  exerciseSet:
+                                                      widget.exerciseSet)))
+                                      .then(
+                                        (_) => setState(() {
+                                          progressValue = box.get(
+                                              'EasyDay$dayValue',
+                                              defaultValue: 0.0);
+                                          previousDayProgressValue = box.get(
+                                              'EasyDay$previousDayProgressValueInteger');
+                                        }),
+                                      );
+                                });
+                              }
+                            : null,
                     child: const Text(
                       "START",
                       style: TextStyle(fontSize: 20, color: Colors.white),

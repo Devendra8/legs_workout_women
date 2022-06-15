@@ -79,8 +79,12 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
   Future<void> hiveState() async {
     box = await Hive.openBox('box');
 
-    progress = box.get('beginnerDay$dayValue');
+    progress = box.get('EasyDay$dayValue');
     calorie = box.get('CalorieDay$todayDate', defaultValue: 0.0);
+
+    if (progress != 100) {
+      progress = 0;
+    }
   }
 
   @override
@@ -133,6 +137,14 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           index = index - 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
+                          if (progress.toString() == 'null') {
+                            progress = 0;
+                          }
+                          if (progress != 100) {
+                            progress = progress! - totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('EasyDay$dayValue', progress);
+                          }
                         });
                       },
                 icon: Icon(
@@ -148,6 +160,14 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           index = index + 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
+                          if (progress.toString() == 'null') {
+                            progress = 0;
+                          }
+                          if (progress != 100) {
+                            progress = progress! + totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('EasyDay$dayValue', progress);
+                          }
                         });
                       },
                 icon: Icon(
@@ -239,7 +259,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: CircularCountDownTimer(
                         key: null,
-                        duration: _duration,
+                        duration: widget.exerciseSet.exercises[index].noOfReps,
                         initialDuration: 0,
                         controller: _controller,
                         width: 80,
@@ -279,9 +299,11 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           if (progress.toString() == 'null') {
                             progress = 0;
                           }
-                          progress = progress! + totalProgressValue!;
-                          // progress = progress! / 100;
-                          box.put('EasyDay$dayValue', progress);
+                          if (progress != 100) {
+                            progress = progress! + totalProgressValue!;
+                            // progress = progress! / 100;
+                            box.put('EasyDay$dayValue', progress);
+                          }
                           calorie = calorie! + 5;
                           box.put('CalorieDay$todayDate', calorie);
                           setState(() {
@@ -294,10 +316,11 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                               currentExercise =
                                   widget.exerciseSet.exercises[index];
                               _duration = currentExercise.duration;
-                              _controller.start();
+                              _controller.restart();
                             } else {
                               print("IN ELSE " + ExerciseCount.toString());
                               ExerciseCount += 1;
+
                               // _controller.pause();
                             }
                           });
