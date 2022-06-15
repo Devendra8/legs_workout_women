@@ -33,10 +33,12 @@ class _IntermediateWidgetState extends State<IntermediateWidget> {
 
     int? ProgressValueText;
 
-    double? progressValue = box.get('IntermediateDay$dayValue');
+    double? progressValue =
+        box.get('IntermediateDay$dayValue', defaultValue: 0.0);
 
-    double? previousDayProgressValue =
-        box.get('IntermediateDay$previousDayProgressValueInteger');
+    double? previousDayProgressValue = box.get(
+        'IntermediateDay$previousDayProgressValueInteger',
+        defaultValue: 0.0);
 
     if (progressValue.toString() == 'null') {
       progressValue = 0;
@@ -170,7 +172,7 @@ class _IntermediateWidgetState extends State<IntermediateWidget> {
                                   }),
                                 );
                           }
-                        : previousDayProgressValue == 100
+                        : previousDayProgressValue! > 99
                             ? () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(

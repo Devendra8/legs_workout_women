@@ -32,10 +32,10 @@ class _AdvanceWidgetState extends State<AdvanceWidget> {
 
     int? ProgressValueText;
 
-    double? progressValue = box.get('AdvanceDay$dayValue');
+    double? progressValue = box.get('HardDay$dayValue', defaultValue: 0.0);
 
     double? previousDayProgressValue =
-        box.get('AdvanceDay$previousDayProgressValueInteger');
+        box.get('HardDay$previousDayProgressValueInteger', defaultValue: 0.0);
 
     if (progressValue.toString() == 'null') {
       progressValue = 0;
@@ -156,34 +156,42 @@ class _AdvanceWidgetState extends State<AdvanceWidget> {
                     // borderRadius: BorderRadius.circular(20)),
                     onPressed: dayValue == '1'
                         ? () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        AdvanceExerciseListPage(
-                                            exerciseSet: widget.exerciseSet)))
-                                .then(
-                                  (_) => setState(() {
-                                    progressValue = box.get(
-                                        'AdvanceDay$dayValue',
-                                        defaultValue: 0.0);
-                                  }),
-                                );
+                            setState(() {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          AdvanceExerciseListPage(
+                                              exerciseSet: widget.exerciseSet)))
+                                  .then(
+                                    (_) => setState(() {
+                                      progressValue = box.get(
+                                          'HardDay$dayValue',
+                                          defaultValue: 0.0);
+                                      previousDayProgressValue = box.get(
+                                          'HardDay$previousDayProgressValueInteger');
+                                    }),
+                                  );
+                            });
                           }
-                        : previousDayProgressValue == 100
+                        : previousDayProgressValue! > 99
                             ? () {
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(
-                                        builder: (context) =>
-                                            AdvanceExerciseListPage(
-                                                exerciseSet:
-                                                    widget.exerciseSet)))
-                                    .then(
-                                      (_) => setState(() {
-                                        progressValue = box.get(
-                                            'AdvanceDay$dayValue',
-                                            defaultValue: 0.0);
-                                      }),
-                                    );
+                                setState(() {
+                                  Navigator.of(context)
+                                      .push(MaterialPageRoute(
+                                          builder: (context) =>
+                                              AdvanceExerciseListPage(
+                                                  exerciseSet:
+                                                      widget.exerciseSet)))
+                                      .then(
+                                        (_) => setState(() {
+                                          progressValue = box.get(
+                                              'HardDay$dayValue',
+                                              defaultValue: 0.0);
+                                          previousDayProgressValue = box.get(
+                                              'HardDay$previousDayProgressValueInteger');
+                                        }),
+                                      );
+                                });
                               }
                             : null,
                     child: const Text(

@@ -82,9 +82,11 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
 
     progress = box.get('IntermediateDay$dayValue');
     calorie = box.get('CalorieDay$todayDate', defaultValue: 0.0);
+    print(progress);
 
-    if (progress != 100) {
+    if (progress! < 99) {
       progress = 0;
+      print("intermediate progress 0 executed");
     }
   }
 
@@ -169,6 +171,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                             // progress = progress! / 100;
                             box.put('IntermediateDay$dayValue', progress);
                           }
+                          print(progress);
                         });
                       },
                 icon: Icon(
@@ -305,6 +308,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                             // progress = progress! / 100;
                             box.put('IntermediateDay$dayValue', progress);
                           }
+                          print(progress);
                           calorie = calorie! + 5;
                           box.put('CalorieDay$todayDate', calorie);
                           setState(() {
@@ -317,7 +321,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                               currentExercise =
                                   widget.exerciseSet.exercises[index];
                               _duration = currentExercise.duration;
-                              _controller.start();
+                              _controller.restart();
                             } else {
                               print("IN ELSE " + ExerciseCount.toString());
                               ExerciseCount += 1;

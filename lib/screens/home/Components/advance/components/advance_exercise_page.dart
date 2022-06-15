@@ -79,10 +79,10 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
   Future<void> hiveState() async {
     box = await Hive.openBox('box');
 
-    progress = box.get('AdvanceDay$dayValue');
+    progress = box.get('HardDay$dayValue');
     calorie = box.get('CalorieDay$todayDate', defaultValue: 0.0);
 
-    if (progress != 100) {
+    if (progress! < 99) {
       progress = 0;
     }
   }
@@ -133,7 +133,8 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                     ? null
                     : () {
                         setState(() {
-                          // _controller.restart();
+                          _controller.restart();
+                          _controller.pause();
                           index = index - 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
@@ -143,7 +144,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           if (progress != 100) {
                             progress = progress! - totalProgressValue!;
                             // progress = progress! / 100;
-                            box.put('AdvanceDay$dayValue', progress);
+                            box.put('HardDay$dayValue', progress);
                           }
                         });
                       },
@@ -156,7 +157,8 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                     ? null
                     : () {
                         setState(() {
-                          // _controller.restart();
+                          _controller.restart();
+                          _controller.pause();
                           index = index + 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
@@ -166,7 +168,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           if (progress != 100) {
                             progress = progress! + totalProgressValue!;
                             // progress = progress! / 100;
-                            box.put('AdvanceDay$dayValue', progress);
+                            box.put('HardDay$dayValue', progress);
                           }
                         });
                       },
@@ -302,7 +304,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                           if (progress != 100) {
                             progress = progress! + totalProgressValue!;
                             // progress = progress! / 100;
-                            box.put('AdvanceDay$dayValue', progress);
+                            box.put('HardDay$dayValue', progress);
                           }
 
                           calorie = calorie! + 5;
