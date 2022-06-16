@@ -146,7 +146,7 @@ class _BellyYogaState extends State<BellyYoga> {
           appBar: PreferredSize(
             preferredSize: Size(150, 150), //width and height
             child: AppBar(
-              title: Text("Lose Belly Fat"),
+              title: Text("Buttocks Workout"),
               elevation: 0,
               backgroundColor: violet,
               // backgroundColor: Color(0xFFFFFFFF),
