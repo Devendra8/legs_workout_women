@@ -86,11 +86,11 @@ class _MyAppState extends State<MyApp> {
       duration: 3000,
       imageSize: 500,
       imageSrc: "assets/splash/buttlogo.png",
-      text: "Lose Belly Fat - Abs Workout",
-      textType: TextType.NormalText,
-      textStyle: TextStyle(
-        fontSize: 40.0,
-      ),
+      // text: "Lose Belly Fat - Abs Workout",
+      // textType: TextType.NormalText,
+      // textStyle: TextStyle(
+      //   fontSize: 40.0,
+      // ),
       colors: [
         Colors.purple,
         Colors.blue,
