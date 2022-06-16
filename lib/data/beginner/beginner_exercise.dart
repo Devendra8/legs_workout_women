@@ -3,7 +3,7 @@ import 'package:butt_workout/model/beginner/beginner_exercise.dart';
 final exercises1 = [
   Exercise(
       name: 'Back Stretch',
-      duration: 15,
+      duration: 30,
       noOfReps: 20,
       animation: 'assets/exercises/backstretch.webp',
       sound: "assets/exercises/sound/streachEyes.mp3",
@@ -12,7 +12,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 25,
       noOfReps: 15,
-      animation: 'assets/exercises/Rest.jpg',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(
@@ -26,7 +26,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 15,
       noOfReps: 15,
-      animation: 'assets/exercises/Rest.webp',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(
@@ -40,7 +40,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 15,
       noOfReps: 15,
-      animation: 'assets/exercises/back/Rest.webp',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(
@@ -54,7 +54,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 15,
       noOfReps: 15,
-      animation: 'assets/exercises/back/Rest.webp',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(
@@ -68,7 +68,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 15,
       noOfReps: 15,
-      animation: 'assets/exercises/Rest.webp',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(
@@ -82,7 +82,7 @@ final exercises1 = [
       name: 'Rest',
       duration: 15,
       noOfReps: 15,
-      animation: 'assets/exercises/Rest.webp',
+      animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
       exerciseNo: '0'),
   Exercise(

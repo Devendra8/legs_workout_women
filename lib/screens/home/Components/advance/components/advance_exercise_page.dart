@@ -135,6 +135,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                         setState(() {
                           _controller.restart();
                           _controller.pause();
+                          _isPaused = true;
                           index = index - 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
@@ -159,6 +160,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                         setState(() {
                           _controller.restart();
                           _controller.pause();
+                          _isPaused = true;
                           index = index + 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;

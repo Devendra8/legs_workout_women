@@ -133,7 +133,9 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     ? null
                     : () {
                         setState(() {
-                          // _controller.restart();
+                          _controller.restart();
+                          _controller.pause();
+                          _isPaused = true;
                           index = index - 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
@@ -156,7 +158,9 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     ? null
                     : () {
                         setState(() {
-                          // _controller.restart();
+                          _controller.restart();
+                          _controller.pause();
+                          _isPaused = true;
                           index = index + 1;
                           currentExercise = widget.exerciseSet.exercises[index];
                           ExerciseCount = index;
@@ -259,7 +263,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: CircularCountDownTimer(
                         key: null,
-                        duration: widget.exerciseSet.exercises[index].noOfReps,
+                        duration: _duration,
                         initialDuration: 0,
                         controller: _controller,
                         width: 80,
@@ -421,7 +425,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
   @override
   void dispose() {
     super.dispose();
-    timer!.cancel();
+    // timer!.cancel();
   }
 
   _button({required String title, VoidCallback? onPressed}) {
