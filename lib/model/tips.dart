@@ -17,6 +17,7 @@ class tips1 {
   final Color color;
   final bool isFirst;
   final bool isLast;
+  final String image;
 
   tips1({
     required this.id,
@@ -25,5 +26,6 @@ class tips1 {
     required this.color,
     required this.isFirst,
     required this.isLast,
+    required this.image,
   });
 }

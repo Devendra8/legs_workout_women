@@ -10,6 +10,7 @@ final backSet = [
     color: green,
     isFirst: true,
     isLast: false,
+    image: "assets/tips/backtips1.jpg",
   ),
   tips1(
     id: '2',
@@ -19,6 +20,7 @@ final backSet = [
     color: pink,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips2.jpg",
   ),
   tips1(
     id: '3',
@@ -28,6 +30,7 @@ final backSet = [
     color: yellow,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips3.jpg",
   ),
   tips1(
     id: '4',
@@ -37,6 +40,7 @@ final backSet = [
     color: blue,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips4.jpg",
   ),
   tips1(
     id: '5',
@@ -46,6 +50,7 @@ final backSet = [
     color: yellow,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips1.jpg",
   ),
   tips1(
     id: '6',
@@ -55,6 +60,7 @@ final backSet = [
     color: darkBlue,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips2.jpg",
   ),
   tips1(
     id: '7',
@@ -64,6 +70,7 @@ final backSet = [
     color: darkGreen,
     isFirst: false,
     isLast: false,
+    image: "assets/tips/backtips3.jpg",
   ),
   tips1(
     id: '8',
@@ -73,5 +80,6 @@ final backSet = [
     color: pink,
     isFirst: false,
     isLast: true,
+    image: "assets/tips/backtips4.jpg",
   ),
 ];

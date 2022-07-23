@@ -1,6 +1,6 @@
 import 'package:butt_workout/common/box_decoration.dart';
 import 'package:butt_workout/common/colours.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:butt_workout/screens/tips/Face/face.dart';
 import 'package:flutter/material.dart';
 import 'package:butt_workout/screens/tips/Components/Back/back.dart';
 import 'package:butt_workout/screens/tips/Components/Belly/belly.dart';
@@ -71,6 +71,59 @@ class _BodyState extends State<Body> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // Container(
+                //   padding: EdgeInsets.only(left: 15, top: 15),
+                //   alignment: Alignment.centerLeft,
+                //   child: RichText(
+                //     text: TextSpan(
+                //       style: TextStyle(
+                //         fontSize: 16.0,
+                //         color: Colors.black54,
+                //       ),
+                //       children: <TextSpan>[
+                //         TextSpan(
+                //           text: 'Specially Created',
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                // Container(
+                //   height: 210,
+                //   margin: EdgeInsets.symmetric(vertical: 20),
+                //   child: ListView(
+                //     padding: EdgeInsets.only(top: 3, bottom: 3),
+                //     scrollDirection: Axis.horizontal,
+                //     children: <Widget>[
+                //       Face(),
+                //       SizedBox(
+                //         width: 15,
+                //       ),
+                //       Face(),
+                //       SizedBox(
+                //         width: 15,
+                //       ),
+                //       // hard(),
+                //     ],
+                //   ),
+                // ),
+                // Container(
+                //   padding: EdgeInsets.only(left: 15),
+                //   alignment: Alignment.centerLeft,
+                //   child: RichText(
+                //     text: TextSpan(
+                //       style: TextStyle(
+                //         fontSize: 16.0,
+                //         color: Colors.black54,
+                //       ),
+                //       children: <TextSpan>[
+                //         TextSpan(
+                //           text: 'Most Popular ',
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context)
@@ -78,9 +131,10 @@ class _BodyState extends State<Body> {
                   },
                   child: Container(
                     // margin: EdgeInsets.all(15),
-                    height: 130,
+                    // margin: EdgeInsets.only(top: 5),
+                    height: 110,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.only(right: 10, left: 10, bottom: 5),
                     child: Card(
                       shape: tips_card_border,
                       color: Color(0xFFa6d2ac),
@@ -108,9 +162,9 @@ class _BodyState extends State<Body> {
                   },
                   child: Container(
                     // margin: EdgeInsets.all(15),
-                    height: 130,
+                    height: 110,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(right: 10, left: 10, bottom: 5),
                     child: Card(
                       shape: tips_card_border,
                       color: Color(0xFF7bc0dd),
@@ -138,9 +192,9 @@ class _BodyState extends State<Body> {
                   },
                   child: Container(
                     // margin: EdgeInsets.all(15),
-                    height: 130,
+                    height: 110,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(right: 10, left: 10, bottom: 5),
                     child: Card(
                       shape: tips_card_border,
                       color: Color(0xffffe9b8),
@@ -168,8 +222,8 @@ class _BodyState extends State<Body> {
                 //   },
                 //   child: Container(
                 //     // margin: EdgeInsets.all(15),
-                //     padding: EdgeInsets.all(10),
-                //     height: 130,
+                //   padding: EdgeInsets.only(right: 10, left: 10, bottom: 5),
+                //    height: 110,
                 //     width: MediaQuery.of(context).size.width,
                 //     child: Card(
                 //       shape: RoundedRectangleBorder(
@@ -197,8 +251,8 @@ class _BodyState extends State<Body> {
                   },
                   child: Container(
                     // margin: EdgeInsets.all(15),
-                    padding: EdgeInsets.all(10),
-                    height: 130,
+                    padding: EdgeInsets.only(right: 10, left: 10, bottom: 5),
+                    height: 110,
                     width: MediaQuery.of(context).size.width,
                     child: Card(
                       shape: tips_card_border,
