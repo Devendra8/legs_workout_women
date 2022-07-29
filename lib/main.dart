@@ -2,6 +2,7 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:applovin_max/applovin_max.dart';
 import 'package:butt_workout/common/colours.dart';
 import 'package:butt_workout/common/exit_screen.dart';
 import 'package:butt_workout/data/notification_data.dart';
@@ -41,6 +42,12 @@ Future main() async {
   // UserSimplePreferences.getBooleanValue("firstTimeOpen").then((value) => (() {
   //       isFirstTimeOpen = value;
   //     }));
+
+  //Applovin Setup
+  Map? sdkConfiguration = await AppLovinMAX.initialize(
+      "8m2i43RroE0pSAsyUc7nPv0LlxxVFIg5R6I_MwWGOwmMDlXzbsbnZVZFTikGL7W9nTwB1u89GaG8aT1iTG_-JJ");
+
+  // SDK is initialized, start loading ads
 
   loginScreen = box.get('loginScreen', defaultValue: false);
   waterNotification = box.get('waterNotification', defaultValue: true);
@@ -105,7 +112,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Bahnschrift'),
       theme: _darkTheme,
-      title: 'Office Workout',
+      title: 'Butt Workout',
       home: example1,
     );
   }

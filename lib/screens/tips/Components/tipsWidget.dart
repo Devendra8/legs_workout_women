@@ -1,17 +1,20 @@
-import 'package:butt_workout/common/colours.dart';
+import 'package:butt_workout/model/tips.dart';
+import 'package:butt_workout/screens/tips/Components/body.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/data/stress_tips.dart';
-import 'package:butt_workout/screens/tips/Components/Stress/body.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class Stress extends StatefulWidget {
-  const Stress({Key? key}) : super(key: key);
+class TipsWidget extends StatefulWidget {
+  final tips tipSet;
+
+  const TipsWidget({
+    required this.tipSet,
+  });
 
   @override
-  State<Stress> createState() => _StressState();
+  State<TipsWidget> createState() => _TipsWidgetState();
 }
 
-class _StressState extends State<Stress> {
+class _TipsWidgetState extends State<TipsWidget> {
   final controller = PageController(initialPage: 0);
   int pageNo = 0;
 
@@ -45,10 +48,8 @@ class _StressState extends State<Stress> {
                       print('page ${index + 1}');
                     },
                     controller: controller,
-                    children: stressSet
-                        .map((stressSet) => Body(
-                              stressSet: stressSet,
-                            ))
+                    children: widget.tipSet.tipsClass
+                        .map((tipSet) => Body(tipSet: tipSet))
                         .toList(),
                   ),
                 ),
@@ -62,7 +63,7 @@ class _StressState extends State<Stress> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.7,
                           child: StepProgressIndicator(
-                            totalSteps: stressSet.length,
+                            totalSteps: widget.tipSet.tipsClass.length,
                             currentStep: pageNo + 1,
                             // widget.exerciseSet.exercises.indexOf(currentExercise),
                             selectedColor: Colors.red,

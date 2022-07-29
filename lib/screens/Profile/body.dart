@@ -1,9 +1,10 @@
+import 'package:applovin_max/applovin_max.dart';
 import 'package:butt_workout/common/colours.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:butt_workout/main.dart';
 import 'package:butt_workout/screens/profile/login/login_screen.dart';
 import 'package:butt_workout/shared_preference/user_simple_preference.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 // import 'package:butt_workout/profile/Components/profile_pic.dart';
 
 class Body extends StatefulWidget {
@@ -120,7 +121,9 @@ class _BodyState extends State<Body> {
                         ProfileMenu(
                           icon: "assets/star.svg",
                           text: "Rate",
-                          press: () {},
+                          press: () {
+                            AppLovinMAX.showMediationDebugger();
+                          },
                         ),
                         ProfileMenu(
                           icon: "assets/feedback.svg",

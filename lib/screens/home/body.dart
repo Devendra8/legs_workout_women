@@ -1,14 +1,15 @@
+import 'dart:math';
+
+import 'package:applovin_max/applovin_max.dart';
 import 'package:butt_workout/common/box_decoration.dart';
 import 'package:butt_workout/common/colours.dart';
 import 'package:butt_workout/main.dart';
-import 'package:butt_workout/screens/home/Components/Back/back.dart';
 import 'package:butt_workout/screens/home/Components/Calorie/calorie.dart';
 import 'package:butt_workout/screens/home/Components/Water/water.dart';
 import 'package:butt_workout/screens/home/Components/advance/advance.dart';
 import 'package:butt_workout/screens/home/Components/beginner/beginner.dart';
 import 'package:butt_workout/screens/home/Components/intermediate/intermediate.dart';
 import 'package:butt_workout/shared_preference/user_simple_preference.dart';
-
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -23,9 +24,14 @@ class _BodyState extends State<Body> {
   String name = '';
   int todayDayNo = Jiffy(DateTime.now()).dayOfYear;
   int lastSavedDay = box.get('date', defaultValue: 0);
+  final String _interstitial_ad_unit_id = "fa1b0ac9eb21dff3";
+  bool isLoaded = false;
+  bool isInterstitialAdLoaded = false;
+  bool isBannerAdLoaded = false;
 
   double? CalorieBurn;
   int todayDate = DateTime.now().day;
+  int firstAd = 0;
 
   @override
   void initState() {
@@ -37,6 +43,63 @@ class _BodyState extends State<Body> {
       box.put("CalorieDay$todayDate", 0.0);
     }
     name = UserSimplePreferences.getUsername() ?? '';
+
+    initializeInterstitialAds();
+
+    if (firstAd == 0) {
+      Future.delayed(Duration(milliseconds: 4000), () {
+        if (isInterstitialAdLoaded) {
+          AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
+        }
+      });
+      firstAd = firstAd + 1;
+    }
+  }
+
+  var _interstitialRetryAttempt = 0;
+
+  void initializeInterstitialAds() {
+    AppLovinMAX.setInterstitialListener(InterstitialListener(
+      onAdLoadedCallback: (ad) {
+        // Interstitial ad is ready to be shown. AppLovinMAX.isInterstitialReady(_interstitial_ad_unit_id) will now return 'true'
+        print('Interstitial ad loaded from ' + ad.networkName);
+        isInterstitialAdLoaded = true;
+        // Reset retry attempt
+        _interstitialRetryAttempt = 0;
+      },
+      onAdLoadFailedCallback: (adUnitId, error) {
+        // Interstitial ad failed to load
+        // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+        _interstitialRetryAttempt = _interstitialRetryAttempt + 1;
+
+        int retryDelay = pow(2, min(6, _interstitialRetryAttempt)).toInt();
+
+        print('Interstitial ad failed to load with code ' +
+            error.code.toString() +
+            ' - retrying in ' +
+            retryDelay.toString() +
+            's');
+
+        Future.delayed(Duration(milliseconds: retryDelay * 1000), () {
+          AppLovinMAX.loadInterstitial(_interstitial_ad_unit_id);
+        });
+      },
+      onAdDisplayedCallback: (ad) {
+        print('Interstitial onAdDisplayedCallback from ' + ad.networkName);
+      },
+      onAdDisplayFailedCallback: (ad, error) {
+        print('Interstitial onAdDisplayFailedCallback from ' + ad.networkName);
+      },
+      onAdClickedCallback: (ad) {
+        print('Interstitial onAdClickedCallback from ' + ad.networkName);
+      },
+      onAdHiddenCallback: (ad) {
+        print('Interstitial onAdHiddenCallback from ' + ad.networkName);
+      },
+    ));
+
+    // Load the first interstitial
+    AppLovinMAX.loadInterstitial(_interstitial_ad_unit_id);
   }
 
   @override
@@ -164,6 +227,9 @@ class _BodyState extends State<Body> {
                   onTap: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Beginner()));
+                    if (isInterstitialAdLoaded) {
+                      AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
+                    }
                   },
                   child: Stack(
                     children: [
@@ -295,6 +361,9 @@ class _BodyState extends State<Body> {
                                 defaultValue: 0.0);
                           }),
                         );
+                    if (isInterstitialAdLoaded) {
+                      AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
+                    }
                   },
                   child: Stack(
                     children: [
@@ -387,6 +456,9 @@ class _BodyState extends State<Body> {
                   onTap: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Advance()));
+                    if (isInterstitialAdLoaded) {
+                      AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
+                    }
                   },
                   child: Stack(
                     children: [

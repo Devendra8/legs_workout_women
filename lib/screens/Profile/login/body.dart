@@ -48,7 +48,7 @@ Widget chartblock(BuildContext context) {
     width: MediaQuery.of(context).size.width,
     color: Colors.transparent,
     child: Text(
-      "Lose Belly Fat",
+      "Buttocks Workout",
       style: GoogleFonts.dancingScript(
           textStyle: TextStyle(
               fontSize: MediaQuery.of(context).size.width * 0.15,
