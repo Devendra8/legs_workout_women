@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_equal_for_default_values
 
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/model/intermediate/intermediate_exercise_set.dart';
+import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
 
 class IntermediateExerciseBottomSheet extends StatelessWidget {
   final ExerciseSet exerciseSet;

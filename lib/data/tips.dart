@@ -1,5 +1,5 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/model/tips.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/model/tips.dart';
 
 final tipsMuscle = [
   tips(

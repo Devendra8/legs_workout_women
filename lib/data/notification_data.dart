@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/notification.dart';
+import 'package:legs_workout_women/model/notification.dart';
 
 final getScheduleRecords = [
   Notificate(id: 1, hour: 10, min: 01),

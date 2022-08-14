@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:butt_workout/screens/profile/Components/faq/faq.dart';
-// import 'package:butt_workout/profile/Components/profile_pic.dart';
+import 'package:legs_workout_women/screens/profile/Components/faq/faq.dart';
+// import 'package:legs_workout_women/profile/Components/profile_pic.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

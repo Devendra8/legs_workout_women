@@ -1,6 +1,6 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/main.dart';
-import 'package:butt_workout/screens/home/Components/Calorie/calorie_chart.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/screens/home/Components/Calorie/calorie_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';

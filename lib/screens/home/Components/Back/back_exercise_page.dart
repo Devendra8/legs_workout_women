@@ -1,10 +1,10 @@
 // import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:butt_workout/common/exit_exercise_screen.dart';
-import 'package:butt_workout/data/back/back_exercises.dart';
-import 'package:butt_workout/model/back/back_exercise.dart';
+import 'package:legs_workout_women/common/exit_exercise_screen.dart';
+import 'package:legs_workout_women/data/back/back_exercises.dart';
+import 'package:legs_workout_women/model/back/back_exercise.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 

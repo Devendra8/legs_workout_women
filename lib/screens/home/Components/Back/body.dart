@@ -1,7 +1,7 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/data/back/back_exercises.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/data/back/back_exercises.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/model/back/back_exercise.dart';
+import 'package:legs_workout_women/model/back/back_exercise.dart';
 
 class Body extends StatelessWidget {
   final Exercise back;

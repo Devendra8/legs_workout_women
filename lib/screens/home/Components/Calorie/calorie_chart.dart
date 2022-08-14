@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/main.dart';
+import 'package:legs_workout_women/main.dart';
 
 class BarChartSample1 extends StatefulWidget {
   const BarChartSample1({Key? key}) : super(key: key);

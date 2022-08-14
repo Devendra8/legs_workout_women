@@ -1,7 +1,7 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/main.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/screens/home/Components/Water/water_screen.dart';
+import 'package:legs_workout_women/screens/home/Components/Water/water_screen.dart';
 
 class Water extends StatefulWidget {
   const Water({Key? key}) : super(key: key);

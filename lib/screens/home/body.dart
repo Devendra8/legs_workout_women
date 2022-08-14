@@ -1,15 +1,15 @@
 import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
-import 'package:butt_workout/common/box_decoration.dart';
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/main.dart';
-import 'package:butt_workout/screens/home/Components/Calorie/calorie.dart';
-import 'package:butt_workout/screens/home/Components/Water/water.dart';
-import 'package:butt_workout/screens/home/Components/advance/advance.dart';
-import 'package:butt_workout/screens/home/Components/beginner/beginner.dart';
-import 'package:butt_workout/screens/home/Components/intermediate/intermediate.dart';
-import 'package:butt_workout/shared_preference/user_simple_preference.dart';
+import 'package:legs_workout_women/common/box_decoration.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/screens/home/Components/Calorie/calorie.dart';
+import 'package:legs_workout_women/screens/home/Components/Water/water.dart';
+import 'package:legs_workout_women/screens/home/Components/advance/advance.dart';
+import 'package:legs_workout_women/screens/home/Components/beginner/beginner.dart';
+import 'package:legs_workout_women/screens/home/Components/intermediate/intermediate.dart';
+import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 

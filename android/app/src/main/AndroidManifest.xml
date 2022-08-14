@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.Tropic.butt_workout">
+    package="com.Tropic.legs_workout_women">
    <application
         android:networkSecurityConfig="@xml/network_security_config"
-        android:label="butt_workout"
+        android:label="legs_workout_women"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

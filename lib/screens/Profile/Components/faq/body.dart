@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:butt_workout/model/faq/faq.dart';
+import 'package:legs_workout_women/model/faq/faq.dart';
 
 class Body extends StatelessWidget {
   final FAQ faq;

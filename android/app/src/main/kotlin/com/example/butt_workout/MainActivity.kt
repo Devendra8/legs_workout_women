@@ -1,4 +1,4 @@
-package com.Tropic.butt_workout
+package com.Tropic.legs_workout_women
 
 import io.flutter.embedding.android.FlutterActivity
 

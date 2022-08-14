@@ -1,8 +1,8 @@
-import 'package:butt_workout/common/box_decoration.dart';
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/screens/home/Components/advance/advance_widget.dart';
+import 'package:legs_workout_women/common/box_decoration.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/screens/home/Components/advance/advance_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/data/advance/advance_exercise_sets.dart';
+import 'package:legs_workout_women/data/advance/advance_exercise_sets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Advance extends StatefulWidget {

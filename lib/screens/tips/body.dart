@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
-import 'package:butt_workout/common/box_decoration.dart';
-import 'package:butt_workout/screens/tips/Components/tipsWidget.dart';
+import 'package:legs_workout_women/common/box_decoration.dart';
+import 'package:legs_workout_women/screens/tips/Components/tipsWidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/tips.dart';

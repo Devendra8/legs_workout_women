@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/advance/advance_exercise_set.dart';
+import 'package:legs_workout_women/model/advance/advance_exercise_set.dart';
 import 'package:flutter/material.dart';
 
 import 'advance_exercise.dart';

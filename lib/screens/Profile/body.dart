@@ -1,11 +1,11 @@
 import 'package:applovin_max/applovin_max.dart';
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/main.dart';
-import 'package:butt_workout/screens/profile/login/login_screen.dart';
-import 'package:butt_workout/shared_preference/user_simple_preference.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/screens/profile/login/login_screen.dart';
+import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-// import 'package:butt_workout/profile/Components/profile_pic.dart';
+// import 'package:legs_workout_women/profile/Components/profile_pic.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);

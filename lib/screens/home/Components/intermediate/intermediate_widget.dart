@@ -1,10 +1,10 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/screens/home/Components/intermediate/components/intermediate_exercise_list_page.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/screens/home/Components/intermediate/components/intermediate_exercise_list_page.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/main.dart';
-import 'package:butt_workout/model/intermediate/intermediate_exercise_set.dart';
-import 'package:butt_workout/screens/home/components/intermediate/components/intermediate_exercise_bottom_sheet.dart';
-import 'package:butt_workout/screens/home/components/intermediate/components/intermediate_exercise_page.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
+import 'package:legs_workout_women/screens/home/components/intermediate/components/intermediate_exercise_bottom_sheet.dart';
+import 'package:legs_workout_women/screens/home/components/intermediate/components/intermediate_exercise_page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class IntermediateWidget extends StatefulWidget {

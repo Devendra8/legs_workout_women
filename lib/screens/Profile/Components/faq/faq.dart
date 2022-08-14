@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:butt_workout/data/faq/faq_sets.dart';
-import 'package:butt_workout/screens/profile/Components/faq/body.dart';
+import 'package:legs_workout_women/data/faq/faq_sets.dart';
+import 'package:legs_workout_women/screens/profile/Components/faq/body.dart';
 
 class FAQ extends StatelessWidget {
   const FAQ({Key? key}) : super(key: key);

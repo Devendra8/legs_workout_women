@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.Tropic" "\0"
-            VALUE "FileDescription", "butt_workout" "\0"
+            VALUE "FileDescription", "legs_workout_women" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "butt_workout" "\0"
+            VALUE "InternalName", "legs_workout_women" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.Tropic. All rights reserved." "\0"
-            VALUE "OriginalFilename", "butt_workout.exe" "\0"
-            VALUE "ProductName", "butt_workout" "\0"
+            VALUE "OriginalFilename", "legs_workout_women.exe" "\0"
+            VALUE "ProductName", "legs_workout_women" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

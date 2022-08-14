@@ -1,4 +1,4 @@
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:flutter/material.dart';
 
 BoxDecoration home_container_decoration = BoxDecoration(

@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/beginner/beginner_exercise.dart';
+import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
 
 final exercises1 = [
   Exercise(

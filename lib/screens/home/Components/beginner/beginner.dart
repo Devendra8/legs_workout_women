@@ -1,8 +1,8 @@
-import 'package:butt_workout/common/box_decoration.dart';
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/screens/home/Components/beginner/beginner_widget.dart';
+import 'package:legs_workout_women/common/box_decoration.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/screens/home/Components/beginner/beginner_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/data/beginner/beginner_exercise_sets.dart';
+import 'package:legs_workout_women/data/beginner/beginner_exercise_sets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Beginner extends StatefulWidget {

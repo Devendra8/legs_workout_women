@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/back/back_exercise.dart';
+import 'package:legs_workout_women/model/back/back_exercise.dart';
 
 final List<Exercise> backSet = [
   Exercise(

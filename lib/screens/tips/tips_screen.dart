@@ -1,7 +1,7 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/data/tips.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/data/tips.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/screens/tips/body.dart';
+import 'package:legs_workout_women/screens/tips/body.dart';
 
 class TipScreen extends StatelessWidget {
   const TipScreen({Key? key}) : super(key: key);

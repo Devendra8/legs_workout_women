@@ -1,6 +1,6 @@
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/screens/home/body.dart';
+import 'package:legs_workout_women/screens/home/body.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

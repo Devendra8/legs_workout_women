@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/intermediate/intermediate_exercise_set.dart';
+import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
 import 'package:flutter/material.dart';
 
 import 'intermediate_exercise.dart';

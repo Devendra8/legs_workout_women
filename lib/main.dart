@@ -3,17 +3,17 @@
 
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:applovin_max/applovin_max.dart';
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/common/exit_screen.dart';
-import 'package:butt_workout/data/notification_data.dart';
-import 'package:butt_workout/notificationApi.dart';
-import 'package:butt_workout/screens/Profile/login/login_screen.dart';
-import 'package:butt_workout/screens/Profile/profile_screen.dart';
-import 'package:butt_workout/screens/home/Components/Water/water_screen.dart';
-import 'package:butt_workout/screens/home/home.dart';
-import 'package:butt_workout/screens/tips/tips_screen.dart';
-import 'package:butt_workout/shared_preference/progress_value.dart';
-import 'package:butt_workout/shared_preference/user_simple_preference.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/common/exit_screen.dart';
+import 'package:legs_workout_women/data/notification_data.dart';
+import 'package:legs_workout_women/notificationApi.dart';
+import 'package:legs_workout_women/screens/Profile/login/login_screen.dart';
+import 'package:legs_workout_women/screens/Profile/profile_screen.dart';
+import 'package:legs_workout_women/screens/home/Components/Water/water_screen.dart';
+import 'package:legs_workout_women/screens/home/home.dart';
+import 'package:legs_workout_women/screens/tips/tips_screen.dart';
+import 'package:legs_workout_women/shared_preference/progress_value.dart';
+import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';

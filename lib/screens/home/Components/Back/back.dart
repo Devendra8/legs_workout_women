@@ -1,8 +1,8 @@
-import 'package:butt_workout/common/colours.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:flutter/material.dart';
-import 'package:butt_workout/data/back/back_exercises.dart';
-import 'package:butt_workout/screens/home/Components/Back/body.dart';
-import 'package:butt_workout/screens/home/Components/Back/back_exercise_page.dart';
+import 'package:legs_workout_women/data/back/back_exercises.dart';
+import 'package:legs_workout_women/screens/home/Components/Back/body.dart';
+import 'package:legs_workout_women/screens/home/Components/Back/back_exercise_page.dart';
 
 class Back extends StatelessWidget {
   const Back({Key? key}) : super(key: key);

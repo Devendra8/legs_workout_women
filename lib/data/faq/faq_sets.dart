@@ -1,4 +1,4 @@
-import 'package:butt_workout/model/faq/faq.dart';
+import 'package:legs_workout_women/model/faq/faq.dart';
 
 final faqSets = [
   FAQ(

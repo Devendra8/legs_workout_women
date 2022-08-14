@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(butt_workout LANGUAGES CXX)
+project(legs_workout_women LANGUAGES CXX)
 
-set(BINARY_NAME "butt_workout")
+set(BINARY_NAME "legs_workout_women")
 
 cmake_policy(SET CMP0063 NEW)
 

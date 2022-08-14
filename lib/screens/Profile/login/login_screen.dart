@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:butt_workout/screens/profile/login/body.dart';
+import 'package:legs_workout_women/screens/profile/login/body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);

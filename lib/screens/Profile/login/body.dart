@@ -1,10 +1,10 @@
-import 'package:butt_workout/common/colours.dart';
-import 'package:butt_workout/screens/Profile/profile_screen.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/screens/Profile/profile_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:butt_workout/App.dart';
-import 'package:butt_workout/common/exit_screen.dart';
-import 'package:butt_workout/main.dart';
-import 'package:butt_workout/shared_preference/user_simple_preference.dart';
+// import 'package:legs_workout_women/App.dart';
+import 'package:legs_workout_women/common/exit_screen.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
