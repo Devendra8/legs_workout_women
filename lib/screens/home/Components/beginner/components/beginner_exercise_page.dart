@@ -1,12 +1,12 @@
 import 'dart:async';
-import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/data/beginner/beginner_exercise_sets.dart';
+
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise_set.dart';
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class BeginnerExercisePage extends StatefulWidget {
@@ -131,24 +131,36 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
             IconButton(
                 onPressed: currentExercise == firsExercise
                     ? null
-                    : () {
-                        setState(() {
-                          _controller.restart();
-                          _controller.pause();
-                          _isPaused = true;
-                          index = index - 1;
-                          currentExercise = widget.exerciseSet.exercises[index];
-                          ExerciseCount = index;
-                          if (progress.toString() == 'null') {
-                            progress = 0;
+                    : currentExercise.type == "time"
+                        ? () {
+                            setState(() {
+                              _controller.restart();
+                              _controller.pause();
+                              _isPaused = true;
+                              index = index - 1;
+                              currentExercise =
+                                  widget.exerciseSet.exercises[index];
+                              ExerciseCount = index;
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! - totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('EasyDay$dayValue', progress);
+                              }
+                            });
                           }
-                          if (progress != 100) {
-                            progress = progress! - totalProgressValue!;
-                            // progress = progress! / 100;
-                            box.put('EasyDay$dayValue', progress);
-                          }
-                        });
-                      },
+                        : () {
+                            setState(() {
+                              index = index - 1;
+                              ExerciseCount = index;
+                              currentExercise =
+                                  widget.exerciseSet.exercises[index];
+                              _isPaused = true;
+                              _isPlaying = false;
+                            });
+                          },
                 icon: Icon(
                   Icons.keyboard_arrow_left,
                   color: Colors.black,
@@ -156,24 +168,36 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
             IconButton(
                 onPressed: currentExercise == lastExercise
                     ? null
-                    : () {
-                        setState(() {
-                          _controller.restart();
-                          _controller.pause();
-                          _isPaused = true;
-                          index = index + 1;
-                          currentExercise = widget.exerciseSet.exercises[index];
-                          ExerciseCount = index;
-                          if (progress.toString() == 'null') {
-                            progress = 0;
+                    : currentExercise.type == "time"
+                        ? () {
+                            setState(() {
+                              _controller.restart();
+                              _controller.pause();
+                              _isPaused = true;
+                              index = index + 1;
+                              currentExercise =
+                                  widget.exerciseSet.exercises[index];
+                              ExerciseCount = index;
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! + totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('EasyDay$dayValue', progress);
+                              }
+                            });
                           }
-                          if (progress != 100) {
-                            progress = progress! + totalProgressValue!;
-                            // progress = progress! / 100;
-                            box.put('EasyDay$dayValue', progress);
-                          }
-                        });
-                      },
+                        : () {
+                            setState(() {
+                              index = index + 1;
+                              ExerciseCount = index;
+                              currentExercise =
+                                  widget.exerciseSet.exercises[index];
+                              _isPaused = true;
+                              _isPlaying = false;
+                            });
+                          },
                 icon: Icon(
                   Icons.keyboard_arrow_right_rounded,
                   color: Colors.black,
@@ -261,75 +285,146 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
-                      child: CircularCountDownTimer(
-                        key: null,
-                        duration: _duration,
-                        initialDuration: 0,
-                        controller: _controller,
-                        width: 80,
-                        height: 80,
-                        ringColor: Colors.green.shade700,
-                        // ringGradient: RadialGradient(
-                        //   center: Alignment(-0.8, -0.6),
-                        //   colors: [Color(0xFF9ab0ea), Color(0xFF1d55df)],
-                        //   radius: 1.0,
-                        // ),
-                        fillColor: Colors.green,
-                        // fillColor: Colors.purpleAccent[100]!,
-                        // fillGradient: RadialGradient(
-                        //   center: Alignment(-0.8, -0.6),
-                        //   colors: [Color(0xFF9ab0ea), Color(0xFF1d55df)],
-                        //   radius: 1.0,
-                        // ),
-                        backgroundColor: Colors.green,
-                        backgroundGradient: null,
-                        strokeWidth: 8.0,
-                        strokeCap: StrokeCap.round,
-                        textStyle: TextStyle(
-                            fontSize: 33.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                        textFormat: CountdownTextFormat.S,
-                        isReverse: true,
-                        isReverseAnimation: true,
-                        isTimerTextShown: true,
-                        autoStart: false,
-                        onStart: () {
-                          // Here, do whatever you want
-                          print('Countdown Started');
-                        },
-                        onComplete: () {
-                          print('Countdown Ended');
-                          if (progress.toString() == 'null') {
-                            progress = 0;
-                          }
-                          if (progress != 100) {
-                            progress = progress! + totalProgressValue!;
-                            // progress = progress! / 100;
-                            box.put('EasyDay$dayValue', progress);
-                          }
-                          calorie = calorie! + 5;
-                          box.put('CalorieDay$todayDate', calorie);
-                          setState(() {
-                            if (index <
-                                widget.exerciseSet.exercises.length - 1) {
-                              print("Before" + ExerciseCount.toString());
-                              index = index + 1;
-                              ExerciseCount = index;
-                              print("After" + ExerciseCount.toString());
-                              currentExercise =
-                                  widget.exerciseSet.exercises[index];
-                              _duration = currentExercise.duration;
-                              _controller.restart();
-                            } else {
-                              print("IN ELSE " + ExerciseCount.toString());
-                              ExerciseCount += 1;
+                      child: currentExercise.type == "time"
+                          ? CircularCountDownTimer(
+                              key: null,
+                              duration: _duration,
+                              initialDuration: 0,
+                              controller: _controller,
+                              width: 80,
+                              height: 80,
+                              ringColor: Colors.green.shade700,
+                              // ringGradient: RadialGradient(
+                              //   center: Alignment(-0.8, -0.6),
+                              //   colors: [Color(0xFF9ab0ea), Color(0xFF1d55df)],
+                              //   radius: 1.0,
+                              // ),
+                              fillColor: Colors.green,
+                              // fillColor: Colors.purpleAccent[100]!,
+                              // fillGradient: RadialGradient(
+                              //   center: Alignment(-0.8, -0.6),
+                              //   colors: [Color(0xFF9ab0ea), Color(0xFF1d55df)],
+                              //   radius: 1.0,
+                              // ),
+                              backgroundColor: Colors.green,
+                              backgroundGradient: null,
+                              strokeWidth: 8.0,
+                              strokeCap: StrokeCap.round,
+                              textStyle: TextStyle(
+                                  fontSize: 33.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              textFormat: CountdownTextFormat.S,
+                              isReverse: true,
+                              isReverseAnimation: true,
+                              isTimerTextShown: true,
+                              autoStart: false,
+                              onStart: () {
+                                // Here, do whatever you want
+                                print('Countdown Started');
+                                currentExercise.type == "rep"
+                                    ? _controller.pause()
+                                    : null;
+                              },
+                              onComplete: () {
+                                print('Countdown Ended');
+                                if (progress.toString() == 'null') {
+                                  progress = 0;
+                                }
+                                if (progress != 100) {
+                                  progress = progress! + totalProgressValue!;
+                                  // progress = progress! / 100;
+                                  box.put('EasyDay$dayValue', progress);
+                                }
+                                calorie = calorie! + 5;
+                                box.put('CalorieDay$todayDate', calorie);
+                                setState(() {
+                                  if (index <
+                                      widget.exerciseSet.exercises.length - 1) {
+                                    print("Before" + ExerciseCount.toString());
+                                    index = index + 1;
+                                    ExerciseCount = index;
+                                    print("After" + ExerciseCount.toString());
+                                    currentExercise =
+                                        widget.exerciseSet.exercises[index];
+                                    _duration = currentExercise.duration;
+                                    _controller.restart();
+                                  } else {
+                                    print(
+                                        "IN ELSE " + ExerciseCount.toString());
+                                    ExerciseCount += 1;
 
-                              // _controller.pause();
-                            }
-                          });
-                        },
-                      ),
+                                    // _controller.pause();
+                                  }
+                                });
+                              },
+                            )
+                          : Container(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "X ${currentExercise.noOfReps}",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  FlatButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          index = index + 1;
+                                          ExerciseCount = index;
+                                          currentExercise = widget
+                                              .exerciseSet.exercises[index];
+                                          _isPaused = true;
+                                          _isPlaying = false;
+                                        });
+
+                                        // print('Countdown Ended');
+                                        // if (progress.toString() == 'null') {
+                                        //   progress = 0;
+                                        // }
+                                        // if (progress != 100) {
+                                        //   progress =
+                                        //       progress! + totalProgressValue!;
+                                        //   // progress = progress! / 100;
+                                        //   box.put('EasyDay$dayValue', progress);
+                                        // }
+                                        // calorie = calorie! + 5;
+                                        // box.put(
+                                        //     'CalorieDay$todayDate', calorie);
+                                        // setState(() {
+                                        //   if (index <
+                                        //       widget.exerciseSet.exercises
+                                        //               .length -
+                                        //           1) {
+                                        //     print("Before" +
+                                        //         ExerciseCount.toString());
+                                        //     index = index + 1;
+                                        //     ExerciseCount = index;
+                                        //     print("After" +
+                                        //         ExerciseCount.toString());
+                                        //     currentExercise = widget
+                                        //         .exerciseSet.exercises[index];
+                                        //     _duration =
+                                        //         currentExercise.duration;
+                                        //     // _controller.resume();
+                                        //     // _controller.restart();
+                                        //   } else {
+                                        //     print("IN ELSE " +
+                                        //         ExerciseCount.toString());
+                                        //     ExerciseCount += 1;
+
+                                        //     // _controller.pause();
+                                        //   }
+                                        // });
+                                        // setState(() {});
+                                      },
+                                      color: Colors.amber,
+                                      child: Text(
+                                        "Done",
+                                        style: TextStyle(color: Colors.black),
+                                      ))
+                                ],
+                              ),
+                            ),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.25,
@@ -415,7 +510,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
   }
 
   Future resume() async {
-    _controller.resume();
+    _controller.restart();
 
     setState(() {
       _isPlaying = true;

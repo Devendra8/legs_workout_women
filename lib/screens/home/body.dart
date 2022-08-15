@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
+import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:legs_workout_women/common/box_decoration.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/main.dart';
@@ -10,8 +12,6 @@ import 'package:legs_workout_women/screens/home/Components/advance/advance.dart'
 import 'package:legs_workout_women/screens/home/Components/beginner/beginner.dart';
 import 'package:legs_workout_women/screens/home/Components/intermediate/intermediate.dart';
 import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
-import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
       onAdLoadedCallback: (ad) {
         // Interstitial ad is ready to be shown. AppLovinMAX.isInterstitialReady(_interstitial_ad_unit_id) will now return 'true'
         print('Interstitial ad loaded from ' + ad.networkName);
-        isInterstitialAdLoaded = true;
+        // isInterstitialAdLoaded = true;
         // Reset retry attempt
         _interstitialRetryAttempt = 0;
       },

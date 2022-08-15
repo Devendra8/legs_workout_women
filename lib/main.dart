@@ -3,6 +3,9 @@
 
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:applovin_max/applovin_max.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/common/exit_screen.dart';
 import 'package:legs_workout_women/data/notification_data.dart';
@@ -14,9 +17,6 @@ import 'package:legs_workout_women/screens/home/home.dart';
 import 'package:legs_workout_women/screens/tips/tips_screen.dart';
 import 'package:legs_workout_women/shared_preference/progress_value.dart';
 import 'package:legs_workout_women/shared_preference/user_simple_preference.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 import 'package:wakelock/wakelock.dart';
 
@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Bahnschrift'),
       theme: _darkTheme,
-      title: 'Butt Workout',
+      title: 'Legs Workout',
       home: example1,
     );
   }
@@ -153,7 +153,7 @@ class _BellyYogaState extends State<BellyYoga> {
           appBar: PreferredSize(
             preferredSize: Size(150, 150), //width and height
             child: AppBar(
-              title: Text("Buttocks Workout"),
+              title: Text("Legs Workout"),
               elevation: 0,
               backgroundColor: violet,
               // backgroundColor: Color(0xFFFFFFFF),

@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
+import 'package:flutter/material.dart';
 import 'package:legs_workout_women/common/box_decoration.dart';
 import 'package:legs_workout_women/screens/tips/Components/tipsWidget.dart';
-import 'package:flutter/material.dart';
 
 import '../../model/tips.dart';
 
@@ -37,7 +37,7 @@ class _BodyState extends State<Body> {
       onAdLoadedCallback: (ad) {
         // Interstitial ad is ready to be shown. AppLovinMAX.isInterstitialReady(_interstitial_ad_unit_id) will now return 'true'
         print('Interstitial ad loaded from ' + ad.networkName);
-        isInterstitialAdLoaded = true;
+        // isInterstitialAdLoaded = true;
         // Reset retry attempt
         _interstitialRetryAttempt = 0;
       },
