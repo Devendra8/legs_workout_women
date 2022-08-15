@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
+import 'package:legs_workout_women/common/exit_screen.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise_set.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -363,9 +365,13 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                               child: Column(
                                 children: [
                                   Text(
-                                    "X ${currentExercise.noOfReps}",
-                                    style: TextStyle(color: Colors.black),
+                                    "x ${currentExercise.noOfReps}",
+                                    style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),
                                   ),
+                                  Text(
+                                        "Reps",
+                                        style: TextStyle(color: Colors.black),
+                                      )
                                   // FlatButton(
                                   //     onPressed: () {
                                   //       setState(() {
@@ -377,45 +383,8 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                   //         _isPlaying = false;
                                   //       });
 
-                                  //       // print('Countdown Ended');
-                                  //       // if (progress.toString() == 'null') {
-                                  //       //   progress = 0;
-                                  //       // }
-                                  //       // if (progress != 100) {
-                                  //       //   progress =
-                                  //       //       progress! + totalProgressValue!;
-                                  //       //   // progress = progress! / 100;
-                                  //       //   box.put('EasyDay$dayValue', progress);
-                                  //       // }
-                                  //       // calorie = calorie! + 5;
-                                  //       // box.put(
-                                  //       //     'CalorieDay$todayDate', calorie);
-                                  //       // setState(() {
-                                  //       //   if (index <
-                                  //       //       widget.exerciseSet.exercises
-                                  //       //               .length -
-                                  //       //           1) {
-                                  //       //     print("Before" +
-                                  //       //         ExerciseCount.toString());
-                                  //       //     index = index + 1;
-                                  //       //     ExerciseCount = index;
-                                  //       //     print("After" +
-                                  //       //         ExerciseCount.toString());
-                                  //       //     currentExercise = widget
-                                  //       //         .exerciseSet.exercises[index];
-                                  //       //     _duration =
-                                  //       //         currentExercise.duration;
-                                  //       //     // _controller.resume();
-                                  //       //     // _controller.restart();
-                                  //       //   } else {
-                                  //       //     print("IN ELSE " +
-                                  //       //         ExerciseCount.toString());
-                                  //       //     ExerciseCount += 1;
 
-                                  //       //     // _controller.pause();
-                                  //       //   }
-                                  //       // });
-                                  //       // setState(() {});
+
                                   //     },
                                   //     color: Colors.amber,
                                   //     child: Text(
@@ -472,6 +441,8 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     
                     onPressed: () => {
                       if(currentExercise.type == "rep"){
+                        if(index <
+                                      widget.exerciseSet.exercises.length - 1 ){
                         setState(() {
                         index = index + 1;
                         ExerciseCount = index;
@@ -480,6 +451,10 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                         _isPaused = true;
                         _isPlaying = false;
                         })
+                        } else if(index ==
+                                      widget.exerciseSet.exercises.length - 1 ){
+                                        showExitPopup(context)
+                                      }
                       }
                       else{
                       _isPlaying
