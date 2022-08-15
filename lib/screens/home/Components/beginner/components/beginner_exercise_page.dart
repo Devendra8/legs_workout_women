@@ -318,7 +318,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                               isReverse: true,
                               isReverseAnimation: true,
                               isTimerTextShown: true,
-                              autoStart: false,
+                              autoStart: true,
                               onStart: () {
                                 // Here, do whatever you want
                                 print('Countdown Started');
@@ -366,62 +366,62 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                     "X ${currentExercise.noOfReps}",
                                     style: TextStyle(color: Colors.black),
                                   ),
-                                  FlatButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          index = index + 1;
-                                          ExerciseCount = index;
-                                          currentExercise = widget
-                                              .exerciseSet.exercises[index];
-                                          _isPaused = true;
-                                          _isPlaying = false;
-                                        });
+                                  // FlatButton(
+                                  //     onPressed: () {
+                                  //       setState(() {
+                                  //         index = index + 1;
+                                  //         ExerciseCount = index;
+                                  //         currentExercise = widget
+                                  //             .exerciseSet.exercises[index];
+                                  //         _isPaused = true;
+                                  //         _isPlaying = false;
+                                  //       });
 
-                                        // print('Countdown Ended');
-                                        // if (progress.toString() == 'null') {
-                                        //   progress = 0;
-                                        // }
-                                        // if (progress != 100) {
-                                        //   progress =
-                                        //       progress! + totalProgressValue!;
-                                        //   // progress = progress! / 100;
-                                        //   box.put('EasyDay$dayValue', progress);
-                                        // }
-                                        // calorie = calorie! + 5;
-                                        // box.put(
-                                        //     'CalorieDay$todayDate', calorie);
-                                        // setState(() {
-                                        //   if (index <
-                                        //       widget.exerciseSet.exercises
-                                        //               .length -
-                                        //           1) {
-                                        //     print("Before" +
-                                        //         ExerciseCount.toString());
-                                        //     index = index + 1;
-                                        //     ExerciseCount = index;
-                                        //     print("After" +
-                                        //         ExerciseCount.toString());
-                                        //     currentExercise = widget
-                                        //         .exerciseSet.exercises[index];
-                                        //     _duration =
-                                        //         currentExercise.duration;
-                                        //     // _controller.resume();
-                                        //     // _controller.restart();
-                                        //   } else {
-                                        //     print("IN ELSE " +
-                                        //         ExerciseCount.toString());
-                                        //     ExerciseCount += 1;
+                                  //       // print('Countdown Ended');
+                                  //       // if (progress.toString() == 'null') {
+                                  //       //   progress = 0;
+                                  //       // }
+                                  //       // if (progress != 100) {
+                                  //       //   progress =
+                                  //       //       progress! + totalProgressValue!;
+                                  //       //   // progress = progress! / 100;
+                                  //       //   box.put('EasyDay$dayValue', progress);
+                                  //       // }
+                                  //       // calorie = calorie! + 5;
+                                  //       // box.put(
+                                  //       //     'CalorieDay$todayDate', calorie);
+                                  //       // setState(() {
+                                  //       //   if (index <
+                                  //       //       widget.exerciseSet.exercises
+                                  //       //               .length -
+                                  //       //           1) {
+                                  //       //     print("Before" +
+                                  //       //         ExerciseCount.toString());
+                                  //       //     index = index + 1;
+                                  //       //     ExerciseCount = index;
+                                  //       //     print("After" +
+                                  //       //         ExerciseCount.toString());
+                                  //       //     currentExercise = widget
+                                  //       //         .exerciseSet.exercises[index];
+                                  //       //     _duration =
+                                  //       //         currentExercise.duration;
+                                  //       //     // _controller.resume();
+                                  //       //     // _controller.restart();
+                                  //       //   } else {
+                                  //       //     print("IN ELSE " +
+                                  //       //         ExerciseCount.toString());
+                                  //       //     ExerciseCount += 1;
 
-                                        //     // _controller.pause();
-                                        //   }
-                                        // });
-                                        // setState(() {});
-                                      },
-                                      color: Colors.amber,
-                                      child: Text(
-                                        "Done",
-                                        style: TextStyle(color: Colors.black),
-                                      ))
+                                  //       //     // _controller.pause();
+                                  //       //   }
+                                  //       // });
+                                  //       // setState(() {});
+                                  //     },
+                                  //     color: Colors.amber,
+                                  //     child: Text(
+                                  //       "Done",
+                                  //       style: TextStyle(color: Colors.black),
+                                  //     ))
                                 ],
                               ),
                             ),
@@ -467,12 +467,35 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     minWidth: MediaQuery.of(context).size.width,
                     height: 50,
                     color: violet,
-                    onPressed: () => _isPlaying
+                    // color: _isPlaying || currentExercise.type == "rep" ? Colors.amber : violet  ,
+
+                    
+                    onPressed: () => {
+                      if(currentExercise.type == "rep"){
+                        setState(() {
+                        index = index + 1;
+                        ExerciseCount = index;
+                        currentExercise = widget
+                            .exerciseSet.exercises[index];
+                        _isPaused = true;
+                        _isPlaying = false;
+                        })
+                      }
+                      else{
+                      _isPlaying
                         ? pause()
                         : _isPaused
                             ? resume()
-                            : play(),
-                    child: (_isPlaying)
+                            : play()
+                      }
+                    },
+                    child: currentExercise.type == "rep" ? 
+                          Text(
+                            "Done",
+                            style: TextStyle(fontSize: 18),
+                          )
+                        :
+                          (_isPlaying)
                         ? Text(
                             "Pause",
                             style: TextStyle(fontSize: 18),
