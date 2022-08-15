@@ -165,7 +165,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           },
                 icon: Icon(
                   Icons.keyboard_arrow_left,
-                  color: Colors.black,
+                  color: currentExercise == firsExercise ? Colors.grey : Colors.black,
                 )),
             IconButton(
                 onPressed: currentExercise == lastExercise
@@ -202,7 +202,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           },
                 icon: Icon(
                   Icons.keyboard_arrow_right_rounded,
-                  color: Colors.black,
+                  color: currentExercise == lastExercise ? Colors.grey : Colors.black,
                 )),
           ],
         ),
