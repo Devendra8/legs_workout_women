@@ -1,10 +1,11 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/main.dart';
 import 'package:legs_workout_women/screens/home/Components/Water/water_chart1.dart';
-import 'package:flutter/material.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class WaterScreen extends StatefulWidget {
@@ -19,6 +20,8 @@ class _WaterScreenState extends State<WaterScreen> {
 
   DateTime? _selectedValue;
   DateTime now = DateTime.now();
+  final waterAudioPlayer = AssetsAudioPlayer();
+  final _assetsAudioPlayer = AssetsAudioPlayer();
 
   // CalendarFormat _calendarFormat = CalendarFormat.week;
   DateTime _focusedDay = DateTime.now();
@@ -26,7 +29,7 @@ class _WaterScreenState extends State<WaterScreen> {
 
   var a = Jiffy().yMMMMd;
   int todayDate = DateTime.now().day;
-  int? selectedDayValue;
+  int? selectedDayValue = DateTime.now().day;
   int? waterTaken;
 
   int todayWaterTaken = 0;
@@ -233,6 +236,9 @@ class _WaterScreenState extends State<WaterScreen> {
                               onTap: () => setState(() {
                                 waterTaken = waterTaken! + 1;
                                 // box.put(key, waterTaken);
+                                waterAudioPlayer.open(
+                                  Audio("assets/sounds/drinking.wav"),
+                                );
                                 waterAddHiveDatabase(
                                     selectedDayValue, waterTaken);
                               }),

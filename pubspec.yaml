@@ -35,7 +35,7 @@ dependencies:
   flutter_svg: ^1.0.3
   jiffy:
   flutter_local_notifications:
-  # assets_audio_player:
+  assets_audio_player:
   percent_indicator: 4.2.1
   fl_chart: 0.50.1
   rxdart:
@@ -104,6 +104,7 @@ flutter:
     - assets/appBar/
     - assets/exercises/
     - assets/splash/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

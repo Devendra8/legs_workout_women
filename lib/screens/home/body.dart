@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
   String name = '';
   int todayDayNo = Jiffy(DateTime.now()).dayOfYear;
   int lastSavedDay = box.get('date', defaultValue: 0);
-  final String _interstitial_ad_unit_id = "fa1b0ac9eb21dff3";
+  final String _interstitial_ad_unit_id = "";
   bool isLoaded = false;
   bool isInterstitialAdLoaded = false;
   bool isBannerAdLoaded = false;
@@ -46,14 +46,14 @@ class _BodyState extends State<Body> {
 
     initializeInterstitialAds();
 
-    if (firstAd == 0) {
-      Future.delayed(Duration(milliseconds: 4000), () {
-        if (isInterstitialAdLoaded) {
-          AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
-        }
-      });
-      firstAd = firstAd + 1;
-    }
+    // if (firstAd == 0) {
+    //   Future.delayed(Duration(milliseconds: 4000), () {
+    //     if (isInterstitialAdLoaded) {
+    //       AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
+    //     }
+    //   });
+    //   firstAd = firstAd + 1;
+    // }
   }
 
   var _interstitialRetryAttempt = 0;

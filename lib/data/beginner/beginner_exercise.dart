@@ -15,7 +15,7 @@ final exercises1 = [
       noOfReps: 15,
       animation: 'assets/exercises/Rest.gif',
       sound: "assets/exercises/sound/.mp3",
-      type: "rep",
+      type: "time",
       exerciseNo: '0'),
   Exercise(
       name: 'Simple Squat',

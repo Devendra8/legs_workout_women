@@ -5,6 +5,7 @@ class Exercise {
   final String animation;
   final String sound;
   final String exerciseNo;
+  final String type;
 
   Exercise(
       {required this.name,
@@ -12,5 +13,6 @@ class Exercise {
       required this.noOfReps,
       required this.animation,
       required this.sound,
+      required this.type,
       required this.exerciseNo});
 }
