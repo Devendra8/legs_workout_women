@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
-import 'package:legs_workout_women/common/exit_screen.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
 import 'package:legs_workout_women/model/beginner/beginner_exercise_set.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -165,7 +163,9 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           },
                 icon: Icon(
                   Icons.keyboard_arrow_left,
-                  color: currentExercise == firsExercise ? Colors.grey : Colors.black,
+                  color: currentExercise == firsExercise
+                      ? Colors.grey
+                      : Colors.black,
                 )),
             IconButton(
                 onPressed: currentExercise == lastExercise
@@ -202,7 +202,9 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           },
                 icon: Icon(
                   Icons.keyboard_arrow_right_rounded,
-                  color: currentExercise == lastExercise ? Colors.grey : Colors.black,
+                  color: currentExercise == lastExercise
+                      ? Colors.grey
+                      : Colors.black,
                 )),
           ],
         ),
@@ -366,12 +368,15 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                 children: [
                                   Text(
                                     "x ${currentExercise.noOfReps}",
-                                    style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                        "Reps",
-                                        style: TextStyle(color: Colors.black),
-                                      )
+                                    "Reps",
+                                    style: TextStyle(color: Colors.black),
+                                  )
                                   // FlatButton(
                                   //     onPressed: () {
                                   //       setState(() {
@@ -382,8 +387,6 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                   //         _isPaused = true;
                                   //         _isPlaying = false;
                                   //       });
-
-
 
                                   //     },
                                   //     color: Colors.amber,
@@ -438,52 +441,53 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     color: violet,
                     // color: _isPlaying || currentExercise.type == "rep" ? Colors.amber : violet  ,
 
-                    
                     onPressed: () => {
-                      if(currentExercise.type == "rep"){
-                        if(index <
-                                      widget.exerciseSet.exercises.length - 1 ){
-                        setState(() {
-                        index = index + 1;
-                        ExerciseCount = index;
-                        currentExercise = widget
-                            .exerciseSet.exercises[index];
-                        _isPaused = true;
-                        _isPlaying = false;
-                        })
-                        } else if(index ==
-                                      widget.exerciseSet.exercises.length - 1 ){
-                                        showExitPopup(context)
-                                      }
-                      }
-                      else{
-                      _isPlaying
-                        ? pause()
-                        : _isPaused
-                            ? resume()
-                            : play()
-                      }
-                    },
-                    child: currentExercise.type == "rep" ? 
-                          Text(
+                          if (currentExercise.type == "rep")
+                            {
+                              if (index <
+                                  widget.exerciseSet.exercises.length - 1)
+                                {
+                                  setState(() {
+                                    index = index + 1;
+                                    ExerciseCount = index;
+                                    currentExercise =
+                                        widget.exerciseSet.exercises[index];
+                                    _isPaused = true;
+                                    _isPlaying = false;
+                                  })
+                                }
+                              else if (index ==
+                                  widget.exerciseSet.exercises.length - 1)
+                                {showExitExercisePopup(context)}
+                            }
+                          else
+                            {
+                              _isPlaying
+                                  ? pause()
+                                  : _isPaused
+                                      ? resume()
+                                      : play()
+                            }
+                        },
+                    child: currentExercise.type == "rep"
+                        ? Text(
                             "Done",
                             style: TextStyle(fontSize: 18),
                           )
-                        :
-                          (_isPlaying)
-                        ? Text(
-                            "Pause",
-                            style: TextStyle(fontSize: 18),
-                          )
-                        : (_isPaused)
+                        : (_isPlaying)
                             ? Text(
-                                "Resume",
+                                "Pause",
                                 style: TextStyle(fontSize: 18),
                               )
-                            : Text(
-                                "Play",
-                                style: TextStyle(fontSize: 18),
-                              ))
+                            : (_isPaused)
+                                ? Text(
+                                    "Resume",
+                                    style: TextStyle(fontSize: 18),
+                                  )
+                                : Text(
+                                    "Play",
+                                    style: TextStyle(fontSize: 18),
+                                  ))
               ]),
         ),
       ),

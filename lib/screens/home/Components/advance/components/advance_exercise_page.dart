@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
-import 'package:legs_workout_women/common/exit_screen.dart';
 import 'package:legs_workout_women/model/advance/advance_exercise.dart';
 import 'package:legs_workout_women/model/advance/advance_exercise_set.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -442,7 +441,7 @@ class _AdvanceExercisePageState extends State<AdvanceExercisePage> {
                                 }
                               else if (index ==
                                   widget.exerciseSet.exercises.length - 1)
-                                {showExitPopup(context)}
+                                {showExitExercisePopup(context)}
                             }
                           else
                             {
