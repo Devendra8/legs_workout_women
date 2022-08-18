@@ -2,10 +2,10 @@ import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
 
 final exercises1 = [
   Exercise(
-      name: 'Back Stretch',
+      name: 'Jumping Jack',
       duration: 30,
       noOfReps: 20,
-      animation: 'assets/exercises/backstretch.webp',
+      animation: 'assets/exercises/jumpingjack.webp',
       sound: "assets/exercises/sound/streachEyes.mp3",
       type: "time",
       exerciseNo: '1'),

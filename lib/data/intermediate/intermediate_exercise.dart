@@ -2,10 +2,10 @@ import 'package:legs_workout_women/model/intermediate/intermediate_exercise.dart
 
 final exercises1 = [
   Exercise(
-      name: 'Back Stretch',
+      name: 'Jumping Jack',
       duration: 30,
       noOfReps: 20,
-      animation: 'assets/exercises/backstretch.webp',
+      animation: 'assets/exercises/jumpingjack.webp',
       sound: "assets/exercises/sound/streachEyes.mp3",
       type: "time",
       exerciseNo: '1'),
@@ -137,6 +137,22 @@ final exercises1 = [
       sound: "assets/exercises/sound/headRestSmile.mp3",
       type: "rep",
       exerciseNo: '9'),
+  Exercise(
+      name: 'Hamstring Stretch Left',
+      duration: 30,
+      noOfReps: 12,
+      animation: 'assets/exercises/Hamstring stretch left.webp',
+      sound: "assets/exercises/sound/Hamstring stretch left.mp3",
+      type: "time",
+      exerciseNo: '10'),
+  Exercise(
+      name: 'Hamstring Stretch Right',
+      duration: 30,
+      noOfReps: 12,
+      animation: 'assets/exercises/Hamstring stretchright.webp',
+      sound: "assets/exercises/sound/Hamstring stretchright.mp3",
+      type: "time",
+      exerciseNo: '11'),
 ];
 
 // final exercises2 = [
