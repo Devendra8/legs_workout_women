@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/model/levels.dart';
 import 'package:legs_workout_women/screens/home/Components/advance/components/advance_exercise_bottom_sheet.dart';
 import 'package:legs_workout_women/screens/home/Components/advance/components/advance_exercise_list_page.dart';
-import 'package:flutter/material.dart';
-import 'package:legs_workout_women/main.dart';
-import 'package:legs_workout_women/model/advance/advance_exercise_set.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class AdvanceWidget extends StatefulWidget {
@@ -123,7 +123,7 @@ class _AdvanceWidgetState extends State<AdvanceWidget> {
                 child: CircularPercentIndicator(
                   radius: 25.0,
                   lineWidth: 5.0,
-                  percent: progressValue,
+                  percent: progressValue < 1 ? progressValue : 1,
                   center: Text(
                     "$ProgressValueText%",
                     style: TextStyle(

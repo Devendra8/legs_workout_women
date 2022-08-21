@@ -4,9 +4,9 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/common/exit_exercise_back_screen.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
-import 'package:legs_workout_women/model/beginner/beginner_exercise.dart';
-import 'package:legs_workout_women/model/beginner/beginner_exercise_set.dart';
+import 'package:legs_workout_women/model/levels.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class BeginnerExercisePage extends StatefulWidget {
@@ -56,7 +56,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
 
   int todayDate = DateTime.now().day;
 
-  bool _isPlaying = false;
+  bool _isPlaying = true;
   bool _isPaused = false;
 
   @override
@@ -153,6 +153,15 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           }
                         : () {
                             setState(() {
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! - totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('EasyDay$dayValue', progress);
+                              }
+                              setState(() {});
                               index = index - 1;
                               ExerciseCount = index;
                               currentExercise =
@@ -192,6 +201,15 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                           }
                         : () {
                             setState(() {
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! + totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('EasyDay$dayValue', progress);
+                              }
+                              setState(() {});
                               index = index + 1;
                               ExerciseCount = index;
                               currentExercise =
@@ -353,6 +371,9 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                         widget.exerciseSet.exercises[index];
                                     _duration = currentExercise.duration;
                                     _controller.restart();
+                                  } else if (index ==
+                                      widget.exerciseSet.exercises.length - 1) {
+                                    showExitExerciseBackPopup(context);
                                   } else {
                                     print(
                                         "IN ELSE " + ExerciseCount.toString());
@@ -442,6 +463,12 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                     // color: _isPlaying || currentExercise.type == "rep" ? Colors.amber : violet  ,
 
                     onPressed: () => {
+                          if (progress.toString() == 'null') {progress = 0},
+                          progress = progress! + totalProgressValue!,
+                          // progress = progress! / 100;
+                          box.put('EasyDay$dayValue', progress),
+                          calorie = calorie! + 5,
+                          box.put('CalorieDay$todayDate', calorie),
                           if (currentExercise.type == "rep")
                             {
                               if (index <
@@ -458,7 +485,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                 }
                               else if (index ==
                                   widget.exerciseSet.exercises.length - 1)
-                                {showExitExercisePopup(context)}
+                                {showExitExerciseBackPopup(context)}
                             }
                           else
                             {
@@ -485,7 +512,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
                                     style: TextStyle(fontSize: 18),
                                   )
                                 : Text(
-                                    "Play",
+                                    "Pause",
                                     style: TextStyle(fontSize: 18),
                                   ))
               ]),
@@ -495,7 +522,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
   }
 
   Future play() async {
-    _controller.start();
+    _controller.pause();
 
     setState(() {
       _isPlaying = true;
@@ -512,7 +539,7 @@ class _BeginnerExercisePageState extends State<BeginnerExercisePage> {
   }
 
   Future resume() async {
-    _controller.restart();
+    _controller.resume();
 
     setState(() {
       _isPlaying = true;

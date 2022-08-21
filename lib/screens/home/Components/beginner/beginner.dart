@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:legs_workout_women/common/box_decoration.dart';
 import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/screens/home/Components/beginner/beginner_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:legs_workout_women/data/beginner/beginner_exercise_sets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:legs_workout_women/screens/home/Components/beginner/beginner_widget.dart';
 
 class Beginner extends StatefulWidget {
   const Beginner({Key? key}) : super(key: key);
@@ -213,7 +213,7 @@ class _BeginnerState extends State<Beginner> {
                           ),
                         ),
                         Column(
-                          children: exerciseSets
+                          children: exerciseBeginnerSets
                               .map(
                                 (exerciseSet) =>
                                     BeginnerWidget(exerciseSet: exerciseSet),

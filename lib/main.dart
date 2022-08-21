@@ -38,7 +38,6 @@ Future main() async {
   Hive.registerAdapter(CalorieDayTrackerAdapter());
   NotificationApi.init(initScheduled: true);
   NotificationApi.init();
-
   // UserSimplePreferences.getBooleanValue("firstTimeOpen").then((value) => (() {
   //       isFirstTimeOpen = value;
   //     }));

@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:legs_workout_women/common/box_decoration.dart';
 import 'package:legs_workout_women/common/colours.dart';
-import 'package:flutter/material.dart';
 import 'package:legs_workout_women/data/intermediate/intermediate_exercise_sets.dart';
 import 'package:legs_workout_women/screens/home/components/intermediate/intermediate_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Intermediate extends StatefulWidget {
   const Intermediate({Key? key}) : super(key: key);
@@ -213,7 +213,7 @@ class _IntermediateState extends State<Intermediate> {
                           ),
                         ),
                         Column(
-                          children: exerciseSets
+                          children: exerciseIntermediateSets
                               .map(
                                 (exerciseSet) => IntermediateWidget(
                                     exerciseSet: exerciseSet),

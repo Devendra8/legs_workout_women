@@ -1,7 +1,7 @@
-import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
-import 'package:legs_workout_women/screens/home/Components/intermediate/components/intermediate_exercise_page.dart';
 import 'package:flutter/material.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/model/levels.dart';
+import 'package:legs_workout_women/screens/home/Components/intermediate/components/intermediate_exercise_page.dart';
 
 class IntermediateExerciseListPage extends StatelessWidget {
   final ExerciseSet exerciseSet;

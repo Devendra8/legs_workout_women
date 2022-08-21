@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/main.dart';
+import 'package:legs_workout_women/model/levels.dart';
 import 'package:legs_workout_women/screens/home/Components/beginner/components/beginner_exercise_bottom_sheet.dart';
 import 'package:legs_workout_women/screens/home/Components/beginner/components/beginner_exercise_list_page.dart';
-import 'package:flutter/material.dart';
-import 'package:legs_workout_women/main.dart';
-import 'package:legs_workout_women/model/beginner/beginner_exercise_set.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class BeginnerWidget extends StatefulWidget {
@@ -35,7 +35,7 @@ class _BeginnerWidgetState extends State<BeginnerWidget> {
     double? progressValue = box.get('EasyDay$dayValue');
 
     double? previousDayProgressValue =
-        box.get('EasyDay$previousDayProgressValueInteger');
+        box.get('EasyDay$previousDayProgressValueInteger', defaultValue: 0.0);
 
     if (progressValue.toString() == 'null') {
       progressValue = 0;
@@ -65,7 +65,7 @@ class _BeginnerWidgetState extends State<BeginnerWidget> {
                     ),
                   ),
                 )
-            : previousDayProgressValue == 100
+            : previousDayProgressValue! >= 100
                 ? () => showModalBottomSheet(
                       context: context,
                       builder: (context) => SingleChildScrollView(
@@ -127,9 +127,9 @@ class _BeginnerWidgetState extends State<BeginnerWidget> {
                 child: CircularPercentIndicator(
                   radius: 25.0,
                   lineWidth: 5.0,
-                  percent: progressValue,
+                  percent: progressValue < 1 ? progressValue : 1,
                   center: Text(
-                    "$ProgressValueText%",
+                    "${ProgressValueText < 100 ? ProgressValueText : 100}%",
                     style: TextStyle(
                       color: darkBlue,
                     ),
@@ -177,7 +177,7 @@ class _BeginnerWidgetState extends State<BeginnerWidget> {
                                   );
                             });
                           }
-                        : previousDayProgressValue == 100
+                        : previousDayProgressValue! >= 100
                             ? () {
                                 setState(() {
                                   Navigator.of(context)

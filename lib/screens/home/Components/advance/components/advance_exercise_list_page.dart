@@ -1,7 +1,7 @@
-import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/model/advance/advance_exercise_set.dart';
-import 'package:legs_workout_women/screens/home/Components/advance/components/advance_exercise_page.dart';
 import 'package:flutter/material.dart';
+import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/model/levels.dart';
+import 'package:legs_workout_women/screens/home/Components/advance/components/advance_exercise_page.dart';
 
 class AdvanceExerciseListPage extends StatelessWidget {
   final ExerciseSet exerciseSet;

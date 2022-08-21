@@ -4,9 +4,9 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:legs_workout_women/common/colours.dart';
+import 'package:legs_workout_women/common/exit_exercise_back_screen.dart';
 import 'package:legs_workout_women/common/exit_exercise_screen.dart';
-import 'package:legs_workout_women/model/intermediate/intermediate_exercise.dart';
-import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
+import 'package:legs_workout_women/model/levels.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class IntermediateExercisePage extends StatefulWidget {
@@ -57,7 +57,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
 
   int todayDate = DateTime.now().day;
 
-  bool _isPlaying = false;
+  bool _isPlaying = true;
   bool _isPaused = false;
 
   @override
@@ -65,6 +65,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
     super.initState();
     currentExercise = widget.exerciseSet.exercises.first;
     totalProgressValue = 100 / widget.exerciseSet.exercises.length;
+    print(widget.exerciseSet.exercises.length);
     dayValue = widget.exerciseSet.Day;
     _duration = currentExercise.duration;
 
@@ -156,6 +157,15 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                           }
                         : () {
                             setState(() {
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! - totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('IntermediateDay$dayValue', progress);
+                              }
+                              setState(() {});
                               index = index - 1;
                               ExerciseCount = index;
                               currentExercise =
@@ -195,7 +205,18 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                             });
                           }
                         : () {
+                            print("Executed icon button");
+
                             setState(() {
+                              if (progress.toString() == 'null') {
+                                progress = 0;
+                              }
+                              if (progress != 100) {
+                                progress = progress! + totalProgressValue!;
+                                // progress = progress! / 100;
+                                box.put('IntermediateDay$dayValue', progress);
+                              }
+                              setState(() {});
                               index = index + 1;
                               ExerciseCount = index;
                               currentExercise =
@@ -358,6 +379,9 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                                         widget.exerciseSet.exercises[index];
                                     _duration = currentExercise.duration;
                                     _controller.restart();
+                                  } else if (index ==
+                                      widget.exerciseSet.exercises.length - 1) {
+                                    showExitExerciseBackPopup(context);
                                   } else {
                                     print(
                                         "IN ELSE " + ExerciseCount.toString());
@@ -428,6 +452,15 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                     color: violet,
                     // color: _isPlaying || currentExercise.type == "rep" ? Colors.amber : violet  ,
                     onPressed: () => {
+                          if (progress.toString() == 'null') {progress = 0},
+                          if (progress != 100)
+                            {
+                              progress = progress! + totalProgressValue!,
+                              // progress = progress! / 100;
+                              box.put('IntermediateDay$dayValue', progress),
+                            },
+                          calorie = calorie! + 5,
+                          box.put('CalorieDay$todayDate', calorie),
                           if (currentExercise.type == "rep")
                             {
                               if (index <
@@ -444,7 +477,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
                                 }
                               else if (index ==
                                   widget.exerciseSet.exercises.length - 1)
-                                {showExitExercisePopup(context)}
+                                {showExitExerciseBackPopup(context)}
                             }
                           else
                             {
@@ -481,7 +514,7 @@ class _IntermediateExercisePageState extends State<IntermediateExercisePage> {
   }
 
   Future play() async {
-    _controller.start();
+    _controller.pause();
 
     setState(() {
       _isPlaying = true;

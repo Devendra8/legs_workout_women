@@ -1,9 +1,9 @@
-import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
 import 'package:flutter/material.dart';
+import 'package:legs_workout_women/model/levels.dart';
 
 import 'intermediate_exercise.dart';
 
-final exerciseSets = [
+final exerciseIntermediateSets = [
   ExerciseSet(
     name: 'Day',
     Day: '1',

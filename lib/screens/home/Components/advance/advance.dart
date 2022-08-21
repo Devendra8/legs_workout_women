@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:legs_workout_women/common/box_decoration.dart';
 import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/screens/home/Components/advance/advance_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:legs_workout_women/data/advance/advance_exercise_sets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:legs_workout_women/screens/home/Components/advance/advance_widget.dart';
 
 class Advance extends StatefulWidget {
   const Advance({Key? key}) : super(key: key);
@@ -213,7 +213,7 @@ class _AdvanceState extends State<Advance> {
                           ),
                         ),
                         Column(
-                          children: exerciseSets
+                          children: exerciseAdvanceSets
                               .map(
                                 (exerciseSet) =>
                                     AdvanceWidget(exerciseSet: exerciseSet),

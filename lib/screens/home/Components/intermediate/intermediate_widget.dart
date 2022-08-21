@@ -1,10 +1,9 @@
-import 'package:legs_workout_women/common/colours.dart';
-import 'package:legs_workout_women/screens/home/Components/intermediate/components/intermediate_exercise_list_page.dart';
 import 'package:flutter/material.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/main.dart';
-import 'package:legs_workout_women/model/intermediate/intermediate_exercise_set.dart';
+import 'package:legs_workout_women/model/levels.dart';
+import 'package:legs_workout_women/screens/home/Components/intermediate/components/intermediate_exercise_list_page.dart';
 import 'package:legs_workout_women/screens/home/components/intermediate/components/intermediate_exercise_bottom_sheet.dart';
-import 'package:legs_workout_women/screens/home/components/intermediate/components/intermediate_exercise_page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class IntermediateWidget extends StatefulWidget {
@@ -126,7 +125,7 @@ class _IntermediateWidgetState extends State<IntermediateWidget> {
                 child: CircularPercentIndicator(
                   radius: 25.0,
                   lineWidth: 5.0,
-                  percent: progressValue,
+                  percent: progressValue < 1 ? progressValue : 1,
                   center: Text(
                     "$ProgressValueText%",
                     style: TextStyle(
