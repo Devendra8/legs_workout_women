@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:legs_workout_women/common/colours.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:legs_workout_women/common/colours.dart';
 import 'package:legs_workout_women/main.dart';
 
 class BarChartSample1 extends StatefulWidget {
@@ -190,6 +191,98 @@ class BarChartSample1State extends State<BarChartSample1> {
 
   @override
   Widget build(BuildContext context) {
+    latestDay = box.get("Day${DateTime.now().day}", defaultValue: 0);
+    latest_1Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 1)).day}",
+        defaultValue: 0);
+    latest_2Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 2)).day}",
+        defaultValue: 0);
+    latest_3Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 3)).day}",
+        defaultValue: 0);
+    latest_4Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 4)).day}",
+        defaultValue: 0);
+    latest_5Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 5)).day}",
+        defaultValue: 0);
+    latest_6Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 6)).day}",
+        defaultValue: 0);
+    latest_7Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 7)).day}",
+        defaultValue: 0);
+    latest_8Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 8)).day}",
+        defaultValue: 0);
+    latest_9Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 9)).day}",
+        defaultValue: 0);
+    latest_10Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 10)).day}",
+        defaultValue: 0);
+    latest_11Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 11)).day}",
+        defaultValue: 0);
+    latest_12Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 12)).day}",
+        defaultValue: 0);
+    latest_13Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 13)).day}",
+        defaultValue: 0);
+    latest_14Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 14)).day}",
+        defaultValue: 0);
+    latest_15Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 15)).day}",
+        defaultValue: 0);
+    latest_16Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 16)).day}",
+        defaultValue: 0);
+    latest_17Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 17)).day}",
+        defaultValue: 0);
+    latest_18Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 18)).day}",
+        defaultValue: 0);
+    latest_19Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 19)).day}",
+        defaultValue: 0);
+    latest_20Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 20)).day}",
+        defaultValue: 0);
+    latest_21Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 21)).day}",
+        defaultValue: 0);
+    latest_22Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 22)).day}",
+        defaultValue: 0);
+    latest_23Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 23)).day}",
+        defaultValue: 0);
+    latest_24Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 24)).day}",
+        defaultValue: 0);
+    latest_25Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 25)).day}",
+        defaultValue: 0);
+    latest_26Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 26)).day}",
+        defaultValue: 0);
+    latest_27Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 27)).day}",
+        defaultValue: 0);
+    latest_28Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 28)).day}",
+        defaultValue: 0);
+    latest_29Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 29)).day}",
+        defaultValue: 0);
+    latest_30Day = box.get(
+        "Day${DateTime.now().subtract(Duration(days: 30)).day}",
+        defaultValue: 0);
+
     return AspectRatio(
       aspectRatio: 1.5,
       child: Card(
